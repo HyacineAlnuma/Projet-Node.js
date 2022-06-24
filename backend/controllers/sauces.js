@@ -42,6 +42,11 @@ exports.modifySauce = (req, res, next) => {
             }
             if (sauce.userId !== req.auth.userId) {
                 res.status(403).json({ error: new Error('Requête non authorisée !') });
+            } 
+            if (!req.file) {
+                Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
+                    .then(() => res.status(201).json({ message: 'Sauce modifiée !'}))
+                    .catch(error => res.status(400).json({ error }));
             } else {
                 const filename = sauce.imageUrl.split('/images/')[1];
                 fs.unlink(`images/${filename}`, () => {
