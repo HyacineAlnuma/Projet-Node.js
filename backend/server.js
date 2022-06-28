@@ -1,6 +1,12 @@
+/**
+ * On importe notre application.
+ */
 const http = require('http');
 const app = require('./app');
 
+/**
+ * Le code suivant va nous permettre de normaliser le port.
+ */
 const normalizePort = val => {
     const port = parseInt(val, 10);
 
@@ -13,9 +19,15 @@ const normalizePort = val => {
     return false;
 };
 
+/**
+ * Ici on configure le port qui va être utilisé.
+ */
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+/**
+ * Le code suivant va nous permettre de gérer les erreurs.
+ */
 const errorHandler = error => {
     if (error.syscall !== 'listen') {
         throw error;
@@ -36,6 +48,9 @@ const errorHandler = error => {
     }
 };
 
+/**
+ * On créer ici le serveur.
+ */
 const server = http.createServer(app);
 
 server.on('error', errorHandler);
