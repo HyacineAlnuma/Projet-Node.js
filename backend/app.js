@@ -7,7 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const helmet = require('helmet');
-const xss = require('xss');
+
 
 /**
  * On importe ici nos routes pour les sauces et pour les users.
@@ -47,6 +47,7 @@ app.use(express.json());
 app.use(helmet({
   crossOriginResourcePolicy: false,
 }));
+
 
 /**
  * Le code suivant va nous permettre de gérer la route images de manière statique.

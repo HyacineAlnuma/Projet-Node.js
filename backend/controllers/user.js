@@ -1,5 +1,5 @@
 /**
- * On importe les packages bcrypt et jwt qui vont nous permettre de crypter les mots de passe et de manipuler un token d'identification.
+ * On importe les packages bcrypt et jwt qui vont nous permettre de hacher les mots de passe et de manipuler un token d'identification.
  * On importe également le modèle User.
  */
 const bcrypt = require('bcrypt');
@@ -21,7 +21,7 @@ exports.signup = (req, res, next) => {
             });
             user.save()
                 .then(() => res.status(201).json({ message: 'Utilisateur créé !'}))
-                .catch(error => res.status(400).json({ error }));
+                .catch(error => res.status(403).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));
 };

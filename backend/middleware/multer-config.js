@@ -1,5 +1,5 @@
 /**
- * On importe le package multer qui va nous permettre de gérer les fichiers entrants dans kes requêtes http.
+ * On importe le package multer qui va nous permettre de gérer les fichiers entrants dans les requêtes http.
  */
 const multer = require('multer');
 
