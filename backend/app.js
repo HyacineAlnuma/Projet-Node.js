@@ -8,6 +8,11 @@ const mongoose = require('mongoose');
 const path = require('path');
 const helmet = require('helmet');
 
+/**
+ * On importe ici nos variables d'environnement.
+ */
+require('dotenv').config();
+
 
 /**
  * On importe ici nos routes pour les sauces et pour les users.
@@ -20,7 +25,7 @@ const app = express();
 /**
  * On se connecte ici à notre base de donnée.
  */
-mongoose.connect('mongodb+srv://halnuma:2m6aNhtuWwKPrHGp@cluster0.zrs8lay.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGODB_CONNECT,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

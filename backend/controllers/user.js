@@ -5,6 +5,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+/**
+ * On importe ici nos variables d'environnement.
+ */
+ require('dotenv').config();
+
 const User = require('../models/User');
 
 /**
@@ -49,7 +54,7 @@ exports.login =(req, res, next) => {
                         userId: user._id,
                         token: jwt.sign(
                             { userId: user._id },
-                            'fxpizolzmbqrmq7x20zd5qoi9fg5j5u8d1z9w5je83uvhd6k6nay8z3hc3ndphrh',
+                            process.env.TOKEN_KEY,
                             { expiresIn: '24h' }
                         )
                     }); 

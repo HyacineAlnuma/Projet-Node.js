@@ -4,6 +4,11 @@
 const jwt = require('jsonwebtoken');
 
 /**
+ * On importe ici nos variables d'environnement.
+ */
+ require('dotenv').config();
+
+/**
  * Ceci est le middleware d'authenfication qui va nous permettre d'authentifier nos routes une fois qu'on les aura rattachées à celui-ci.
  * Tout d'abord on isole le token de la requête puisque celui-ci arrive précédé du mot clé Bearer.
  * Ensuite on décode le token grâce à la méthode verify. On y passe le token de la requête ainsi que la clé secrète.
@@ -14,7 +19,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, 'fxpizolzmbqrmq7x20zd5qoi9fg5j5u8d1z9w5je83uvhd6k6nay8z3hc3ndphrh');
+        const decodedToken = jwt.verify(token, process.env.TOKEN_KEY);
         const userId = decodedToken.userId;
         req.auth = { userId };
         if (req.body.userId && req.body.userId !== userId) {
