@@ -3,7 +3,7 @@
 ## CONTEXT
 
 This is my first project using Node.js and noSQL via MongoDB. I made only the backend part of it.
-This project was about building an API for "Hot Takes", which is a website that references hot sauces, and allow users to add, modify, delete, like and dislike different sauces.
+This project is about building an API for "Hot Takes", which is a website that references hot sauces, and allow users to add, modify, delete, like and dislike different sauces.
 
 ## INSTALLATION
 
